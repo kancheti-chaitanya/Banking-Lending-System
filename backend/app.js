@@ -46,7 +46,12 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal Server Error' });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${https://banking-lending-system-2.onrender.com}`);
+// Instead of:
+// const API_URL = 'http://localhost:3001';
+
+// Use:
+const API_URL = process.env.REACT_APP_API_URL;
+
+// Example API call:
+const response = await fetch(`${https://banking-lending-system-2.onrender.com}/api/users`);
 }); 
