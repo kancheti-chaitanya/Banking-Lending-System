@@ -14,7 +14,14 @@ const app = express();
 
 // Security and logging middleware
 app.use(helmet());
-app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
+app.use(cors({ 
+  origin: [
+    'http://localhost:3001',
+    'https://banking-lending-system-frontend.vercel.app',
+    'https://your-vercel-app.vercel.app'
+  ],
+  credentials: true
+}));
 app.use(morgan('combined'));
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
 app.use(express.json());
